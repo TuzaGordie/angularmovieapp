@@ -1,0 +1,36 @@
+<div class="filters">
+    <mat-form-field>
+        <mat-label>Sort</mat-label>
+        <mat-select panelClass="sort-select" [(ngModel)]="sort">
+            <mat-option value="name">Name</mat-option>
+            <mat-option value="name">Released</mat-option>
+            <mat-option value="name">Added</mat-option>
+            <mat-option value="name">Created</mat-option>
+            <mat-option value="name">Rating</mat-option>
+            <mat-option value="name">Metacritics</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="games">
+    <ng-container *ngFor="let game of games">
+        <div class="game">
+            <div class="game-thumb-container">
+                <img *ngIf="game.background_image" src="{{game.background_image}}"
+                alt="thumbnail" 
+                class="game-thumbnail"/>
+                <p *ngIf="!game.background_image">No Image</p>
+            </div>
+            <div class="game-description">
+                <P class="game-name">{{game.name}}</P>
+                <div class="game-platforms">
+                    <img 
+                    *ngFor="let gamePlatform of game.parent_platforms"
+                    class="game-platform"
+                    src="../../assets/images/platforms/{{gamePlatform.platform.name}}.svg" 
+                    alt="{{gamePlatform.platform.name}}"/>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
